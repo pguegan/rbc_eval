@@ -14,7 +14,7 @@ class User
 
   def transfer(to:, amount:)
     Transaction.new(
-      from: @public_key,
+      from: public_key,
       to: to,
       amount: amount,
       private_key: @private_key

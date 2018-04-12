@@ -36,7 +36,7 @@ RSpec.describe User do
       skip "Question 6 : supprimer cette ligne pour exécuter ce test"
       expect do
         transaction
-      end.to change(albert, :balance).by(-12.34)
+      end.to change(albert, :balance).by_at_most(-12.34)
     end
 
     context "unsufficient balance" do
