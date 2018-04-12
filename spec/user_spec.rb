@@ -41,8 +41,8 @@ RSpec.describe User do
 
     context "unsufficient balance" do
 
-      let(:cecile) { User.new "Cécile", 0 }
-      let(:transaction) { cecile.transfer to: basile.public_key, amount: 1.0 }
+      let(:cecile) { User.new "Cécile", 10.0 }
+      let(:transaction) { cecile.transfer to: basile.public_key, amount: 12.0 }
 
       it "is nil" do
         skip "Question 5 : supprimer cette ligne pour exécuter ce test"
