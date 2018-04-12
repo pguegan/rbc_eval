@@ -14,6 +14,11 @@ RSpec.describe User do
       expect(albert.name).to eq("Albert")
     end
 
+    it "credits the user by default" do
+      skip "Question 4 : supprimer cette ligne pour exécuter ce test"
+      expect(albert.balance).to eq(100.0)
+    end
+
   end
 
   describe "#transfer" do
@@ -25,6 +30,32 @@ RSpec.describe User do
       expect(transaction).to be_a(Transaction)
       expect(transaction.from).to eq(albert.public_key)
       expect(transaction.to).to eq(basile.public_key)
+    end
+
+    it "debits the user" do
+      skip "Question 6 : supprimer cette ligne pour exécuter ce test"
+      expect do
+        transaction
+      end.to change(albert, :balance).by(-12.34)
+    end
+
+    context "unsufficient balance" do
+
+      let(:cecile) { User.new "Cécile", 0 }
+      let(:transaction) { cecile.transfer to: basile.public_key, amount: 1.0 }
+
+      it "is nil" do
+        skip "Question 5 : supprimer cette ligne pour exécuter ce test"
+        expect(transaction).to be_nil
+      end
+
+      it "doesn't debit the user" do
+        skip "Question 6 : supprimer cette ligne pour exécuter ce test"
+        expect do
+          transaction
+        end.to_not change(cecile, :balance)
+      end
+
     end
 
   end
