@@ -50,10 +50,28 @@ RSpec.describe User do
       end
 
       it "doesn't debit the user" do
-        skip "Question 6 : supprimer cette ligne pour exécuter ce test"
+        skip "Question 5 : supprimer cette ligne pour exécuter ce test"
         expect do
           transaction
         end.to_not change(cecile, :balance)
+      end
+
+    end
+
+    context "same user" do
+
+      let(:transaction) { albert.transfer to: albert.public_key, amount: 12.34 }
+
+      it "is nil" do
+        skip "Question 7 : supprimer cette ligne pour exécuter ce test"
+        expect(transaction).to be_nil
+      end
+
+      it "doesn't debit the user" do
+        skip "Question 7 : supprimer cette ligne pour exécuter ce test"
+        expect do
+          transaction
+        end.to_not change(albert, :balance)
       end
 
     end
